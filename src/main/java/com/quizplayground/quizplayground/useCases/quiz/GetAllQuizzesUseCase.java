@@ -1,10 +1,12 @@
-package useCases.quiz;
+package com.quizplayground.quizplayground.useCases.quiz;
 
-import models.Quiz;
-import repositories.QuizRepository;
+import com.quizplayground.quizplayground.models.Quiz;
+import com.quizplayground.quizplayground.repositories.QuizRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GetAllQuizzesUseCase {
     private final QuizRepository quizRepository;
 

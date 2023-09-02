@@ -1,11 +1,14 @@
-package useCases.quiz;
+package com.quizplayground.quizplayground.useCases.quiz;
 
-import exceptions.QuizNotFoundException;
-import models.Quiz;
-import repositories.QuizRepository;
+import com.quizplayground.quizplayground.exceptions.QuizNotFoundException;
+import com.quizplayground.quizplayground.models.Quiz;
+import com.quizplayground.quizplayground.repositories.QuizRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class GetSingleQuizUseCase {
     private final QuizRepository quizRepository;
+
     public GetSingleQuizUseCase(QuizRepository quizRepository) {
         this.quizRepository = quizRepository;
     }

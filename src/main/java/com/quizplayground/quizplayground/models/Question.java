@@ -1,4 +1,4 @@
-package models;
+package com.quizplayground.quizplayground.models;
 
 import jakarta.persistence.*;
 
@@ -13,7 +13,8 @@ public class Question {
     private Quiz quiz;
     private String text;
 
-    public Question() {}
+    public Question() {
+    }
 
     public Long getId() {
         return id;

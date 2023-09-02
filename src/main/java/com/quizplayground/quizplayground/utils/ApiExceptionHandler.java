@@ -1,6 +1,6 @@
-package utils;
+package com.quizplayground.quizplayground.utils;
 
-import exceptions.QuizNotFoundException;
+import com.quizplayground.quizplayground.exceptions.QuizNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,4 +1,4 @@
-package exceptions;
+package com.quizplayground.quizplayground.exceptions;
 
 public class QuizNotFoundException extends RuntimeException {
     public QuizNotFoundException(Long id) {

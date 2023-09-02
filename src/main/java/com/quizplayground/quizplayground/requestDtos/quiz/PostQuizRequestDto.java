@@ -1,10 +1,10 @@
-package requestDtos.quiz;
+package com.quizplayground.quizplayground.requestDtos.quiz;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import models.Quiz;
+import com.quizplayground.quizplayground.models.Quiz;
 
 @Data
 @AllArgsConstructor

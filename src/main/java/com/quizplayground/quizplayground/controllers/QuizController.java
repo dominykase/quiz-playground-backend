@@ -1,16 +1,16 @@
-package controllers;
+package com.quizplayground.quizplayground.controllers;
 
 import jakarta.validation.Valid;
-import models.Quiz;
+import com.quizplayground.quizplayground.models.Quiz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import requestDtos.quiz.PatchQuizRequestDto;
-import requestDtos.quiz.PostQuizRequestDto;
-import useCases.quiz.CreateQuizUseCase;
-import useCases.quiz.GetAllQuizzesUseCase;
-import useCases.quiz.GetSingleQuizUseCase;
-import useCases.quiz.UpdateQuizUseCase;
+import com.quizplayground.quizplayground.requestDtos.quiz.PatchQuizRequestDto;
+import com.quizplayground.quizplayground.requestDtos.quiz.PostQuizRequestDto;
+import com.quizplayground.quizplayground.useCases.quiz.CreateQuizUseCase;
+import com.quizplayground.quizplayground.useCases.quiz.GetAllQuizzesUseCase;
+import com.quizplayground.quizplayground.useCases.quiz.GetSingleQuizUseCase;
+import com.quizplayground.quizplayground.useCases.quiz.UpdateQuizUseCase;
 
 import java.util.List;
 
