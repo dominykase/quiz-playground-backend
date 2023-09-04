@@ -18,6 +18,8 @@ public class Quiz {
     private String description;
     @OneToMany
     private List<Question> questionList;
+    @OneToMany
+    private List<Category> categories;
 
     public Long getId() {
         return id;
