@@ -1,55 +1,32 @@
 package com.quizplayground.quizplayground.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "quizzes")
 public class Quiz {
-    private @Id @GeneratedValue Long id;
-    private String name;
-    private String description;
-    @OneToMany
-    private List<Question> questionList;
-    @OneToMany
-    private List<Category> categories;
+    private @Getter @Id @GeneratedValue Long id;
 
-    public Long getId() {
-        return id;
-    }
+    private @Getter @Setter String name;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private @Getter @Setter String description;
 
-    public String getName() {
-        return name;
-    }
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
+    private @Getter @Setter List<Question> questions;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public List<Question> getQuestions() {
-        return questionList;
-    }
-
-    public void setQuestions(List<Question> questionList) {
-        this.questionList = questionList;
-    }
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
+    private @Getter @Setter List<Category> categories;
 }

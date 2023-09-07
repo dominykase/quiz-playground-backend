@@ -26,3 +26,12 @@ CREATE TABLE categories (
     PRIMARY KEY (id),
     FOREIGN KEY (quiz_id) REFERENCES quizzes(id)
 )
+
+--changeset dominykas:2023_09_07_20_47_create_answers_table
+CREATE TABLE answers (
+    id BIGINT UNSIGNED AUTO_INCREMENT,
+    text VARCHAR(255),
+    question_id BIGINT UNSIGNED,
+    PRIMARY KEY (id),
+    FOREIGN KEY (question_id) REFERENCES questions(id)
+)
