@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "quizzes")
 public class Quiz {
-    private @Getter @Id @GeneratedValue Long id;
+    private @Getter @Setter @Id @GeneratedValue Long id;
 
     private @Getter @Setter String name;
 
