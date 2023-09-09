@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "questions")
 public class Question {
@@ -16,6 +18,7 @@ public class Question {
 
     @ManyToOne
     @JoinColumn(name = "quiz_id")
+    @JsonIgnore
     private Quiz quiz;
 
     private @Getter @Setter String text;

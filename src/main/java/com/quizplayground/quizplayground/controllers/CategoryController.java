@@ -19,7 +19,7 @@ public class CategoryController {
   private CreateCategoryUseCase createCategoryUseCase;
 
   @PostMapping("/quiz/{quizId}/category")
-  public Quiz createInitialCategories(
+  public Quiz createCategory(
       @PathVariable Long quizId,
       @RequestBody @Valid CategoryPostRequestDto requestDto) {
     return this.createCategoryUseCase.handle(quizId, requestDto);

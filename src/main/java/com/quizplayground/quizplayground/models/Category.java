@@ -7,6 +7,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 
 @Entity
@@ -18,5 +21,6 @@ public class Category {
 
     @ManyToOne
     @JoinColumn(name = "quiz_id")
+    @JsonIgnore
     private @Getter @Setter Quiz quiz;
 }

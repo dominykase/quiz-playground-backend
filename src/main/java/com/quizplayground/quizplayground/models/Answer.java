@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "answers")
@@ -20,7 +20,6 @@ public class Answer {
 
     @ManyToOne
     @JoinColumn(name = "question_id")
+    @JsonIgnore
     private @Getter @Setter Question question;
-
-    private @Getter @Setter List<Integer> points;
 }
