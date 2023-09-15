@@ -22,7 +22,6 @@ import com.quizplayground.quizplayground.repositories.QuizRepository;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = QuizplaygroundApplication.class)
 @AutoConfigureMockMvc
-@TestPropertySource(locations = "classpath:application-featuretest.properties")
 public class QuizControllerTest {
     @Autowired
     private MockMvc mvc;
