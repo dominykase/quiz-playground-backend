@@ -7,16 +7,17 @@ import com.quizplayground.quizplayground.exceptions.QuizNotFoundException;
 import com.quizplayground.quizplayground.models.Quiz;
 import com.quizplayground.quizplayground.repositories.CategoryRepository;
 import com.quizplayground.quizplayground.repositories.QuizRepository;
-import com.quizplayground.quizplayground.requestDtos.category.PostCategoryRequestDto;
+import com.quizplayground.quizplayground.requestDtos.category.PatchCategoryRequestDto;
 
 @Service
-public class CreateCategoryUseCase {
-  @Autowired
-  private CategoryRepository categoryRepository;
+public class EditCategoryUseCase {
+
   @Autowired
   private QuizRepository quizRepository;
+  @Autowired
+  private CategoryRepository categoryRepository;
 
-  public Quiz handle(Long quizId, PostCategoryRequestDto requestDto) {
+  public Quiz handle(Long quizId, PatchCategoryRequestDto requestDto) {
     Quiz quiz = this.quizRepository.findById(quizId).orElseThrow(() -> new QuizNotFoundException(quizId));
     this.categoryRepository.save(requestDto.toCategory(quiz));
     this.quizRepository.refresh(quiz);

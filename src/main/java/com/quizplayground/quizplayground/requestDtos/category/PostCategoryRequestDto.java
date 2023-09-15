@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryPostRequestDto {
+public class PostCategoryRequestDto {
   @NotNull(message = "Category name field is required.")
   public String name;
 

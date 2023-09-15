@@ -15,7 +15,7 @@ import jakarta.persistence.Entity;
 @Entity
 @Table(name = "categories")
 public class Category {
-    private @Id @GeneratedValue Long id;
+    private @Getter @Setter @Id @GeneratedValue Long id;
 
     private @Getter @Setter String name;
 
