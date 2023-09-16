@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "answers")
 public class Answer {
-    private @Id @GeneratedValue Long id;
+    private @Getter @Setter @Id @GeneratedValue Long id;
 
     private @Getter @Setter String text;
 

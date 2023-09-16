@@ -1,14 +1,17 @@
 package com.quizplayground.quizplayground.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.quizplayground.quizplayground.models.Question;
+import com.quizplayground.quizplayground.models.Quiz;
+import com.quizplayground.quizplayground.requestDtos.answer.PatchAnswerRequestDto;
 import com.quizplayground.quizplayground.requestDtos.answer.PostAnswerRequestDto;
 import com.quizplayground.quizplayground.useCases.answer.CreateAnswerUseCase;
+import com.quizplayground.quizplayground.useCases.answer.EditAnswerUseCase;
 
 import jakarta.validation.Valid;
 
@@ -16,10 +19,18 @@ import jakarta.validation.Valid;
 public class AnswerController {
   @Autowired
   private CreateAnswerUseCase createAnswerUseCase;
+  @Autowired
+  private EditAnswerUseCase editAnswerUseCase;
 
   @PostMapping("/question/{questionId}/answer")
-  public Question createAnswer(
+  public Quiz createAnswer(
       @PathVariable Long questionId, @RequestBody @Valid PostAnswerRequestDto requestDto) {
     return this.createAnswerUseCase.handle(questionId, requestDto);
+  }
+
+  @PatchMapping("/question/{questionId}/answer")
+  public Quiz editAnswer(
+      @PathVariable Long questionId, @RequestBody @Valid PatchAnswerRequestDto requestDto) {
+    return this.editAnswerUseCase.handle(questionId, requestDto);
   }
 }
