@@ -16,7 +16,7 @@ public class Question {
     private @Getter @Setter @Id @GeneratedValue Long id;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-    private List<Answer> answers;
+    private @Getter @Setter List<Answer> answers;
 
     @ManyToOne
     @JoinColumn(name = "quiz_id")
