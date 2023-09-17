@@ -2,17 +2,14 @@ package com.quizplayground.quizplayground.requestDtos.question;
 
 import com.quizplayground.quizplayground.models.Question;
 import com.quizplayground.quizplayground.models.Quiz;
-
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 public class PatchQuestionRequestDto extends PostQuestionRequestDto {
-  @NotNull
+  @NotNull(message = "Id field is required.")
   public Long id;
 
   @Override

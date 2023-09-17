@@ -1,11 +1,14 @@
 package com.quizplayground.quizplayground.controllers;
 
+import com.quizplayground.quizplayground.models.Answer;
 import com.quizplayground.quizplayground.models.Quiz;
 import com.quizplayground.quizplayground.requestDtos.answer.PatchAnswerRequestDto;
+import com.quizplayground.quizplayground.requestDtos.answer.PatchCategoryWeightRequestDto;
 import com.quizplayground.quizplayground.requestDtos.answer.PostAnswerRequestDto;
 import com.quizplayground.quizplayground.useCases.answer.CreateAnswerUseCase;
 import com.quizplayground.quizplayground.useCases.answer.DeleteAnswerUseCase;
 import com.quizplayground.quizplayground.useCases.answer.EditAnswerUseCase;
+import com.quizplayground.quizplayground.useCases.answer.EditCategoryWeightUseCase;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,9 +22,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AnswerController {
-  @Autowired private CreateAnswerUseCase createAnswerUseCase;
-  @Autowired private EditAnswerUseCase editAnswerUseCase;
-  @Autowired private DeleteAnswerUseCase deleteAnswerUseCase;
+  @Autowired
+  private CreateAnswerUseCase createAnswerUseCase;
+  @Autowired
+  private EditAnswerUseCase editAnswerUseCase;
+  @Autowired
+  private DeleteAnswerUseCase deleteAnswerUseCase;
+  @Autowired
+  private EditCategoryWeightUseCase editCategoryWeightUseCase;
 
   @PostMapping("/question/{questionId}/answer")
   public Quiz createAnswer(
@@ -39,5 +47,11 @@ public class AnswerController {
   @ResponseStatus(value = HttpStatus.NO_CONTENT)
   public void deleteAnswer(@PathVariable Long answerId) {
     this.deleteAnswerUseCase.handle(answerId);
+  }
+
+  @PatchMapping("/answer/{answerId}/weight")
+  public Answer editAnswerWeight(
+      @PathVariable Long answerId, @RequestBody @Valid PatchCategoryWeightRequestDto requestDto) {
+    return this.editCategoryWeightUseCase.handle(answerId, requestDto);
   }
 }
