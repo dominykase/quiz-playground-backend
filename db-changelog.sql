@@ -35,3 +35,14 @@ CREATE TABLE answers (
     PRIMARY KEY (id),
     FOREIGN KEY (question_id) REFERENCES questions(id)
 )
+
+--changeset dominykas:2023_09_17_10_18_create_category_weights_table
+CREATE TABLE category_weights (
+    id BIGINT UNSIGNED AUTO_INCREMENT,
+    answer_id BIGINT UNSIGNED,
+    category_id BIGINT UNSIGNED,
+    weight INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (answer_id) REFERENCES answers(id),
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+)

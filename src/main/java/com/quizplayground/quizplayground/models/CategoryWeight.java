@@ -1,30 +1,33 @@
 package com.quizplayground.quizplayground.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "answers")
-public class Answer {
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "category_weights")
+public class CategoryWeight {
+
   private @Getter @Setter @Id @GeneratedValue Long id;
 
-  private @Getter @Setter String text;
+  private @Getter @Setter Integer weight;
 
   @ManyToOne
-  @JoinColumn(name = "question_id")
+  @JoinColumn(name = "answer_id")
   @JsonIgnore
-  private @Getter @Setter Question question;
+  private @Getter @Setter Answer answer;
 
-  @OneToMany(mappedBy = "answer", cascade = CascadeType.ALL)
-  private @Getter @Setter List<CategoryWeight> categoryWeights;
+  @ManyToOne
+  @JoinColumn(name = "category_id")
+  private @Getter @Setter Category category;
 }
