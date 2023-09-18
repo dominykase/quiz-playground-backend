@@ -2,7 +2,6 @@ package com.quizplayground.quizplayground.utils;
 
 import java.util.Arrays;
 import java.util.Collections;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -19,11 +18,11 @@ public class CorsConfiguration {
     config.setAllowCredentials(true);
     config.setAllowedOrigins(Collections.singletonList("http://localhost:5173"));
     config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept"));
-    config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "OPTIONS", "DELETE", "HEAD"));
+    config.setAllowedMethods(
+        Arrays.asList("GET", "POST", "PUT", "PATCH", "OPTIONS", "DELETE", "HEAD"));
 
-    source.registerCorsConfiguration("/*", config);
+    source.registerCorsConfiguration("/**", config);
 
     return new CorsFilter(source);
   }
-
 }
