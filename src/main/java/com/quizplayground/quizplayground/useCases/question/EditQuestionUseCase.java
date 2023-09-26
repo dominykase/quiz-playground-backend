@@ -21,7 +21,8 @@ public class EditQuestionUseCase {
   public Quiz handle(Long quizId, PatchQuestionRequestDto requestDto) {
     Quiz quiz = this.quizRepository.findById(quizId).orElseThrow(() -> new QuizNotFoundException(quizId));
     Question question = requestDto.toQuestion(quiz);
-    this.questionRepository.save(question);
+    question = this.questionRepository.save(question);
+    this.questionRepository.refresh(question);
     this.quizRepository.refresh(quiz);
     return quiz;
   }
