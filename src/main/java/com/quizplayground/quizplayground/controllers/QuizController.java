@@ -33,7 +33,6 @@ public class QuizController {
   }
 
   @PostMapping("/quiz")
-  @ResponseStatus(code = HttpStatus.OK, reason = "OK")
   public Quiz create(@RequestBody @Valid PostQuizRequestDto requestDto) {
     return this.createQuizUseCase.handle(requestDto);
   }
