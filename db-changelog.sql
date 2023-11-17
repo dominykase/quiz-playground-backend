@@ -46,3 +46,16 @@ CREATE TABLE category_weights (
     FOREIGN KEY (answer_id) REFERENCES answers(id),
     FOREIGN KEY (category_id) REFERENCES categories(id)
 )
+
+--changeset dominykas:2023_11_17_16_14_create_question_answers_table
+CREATE TABLE question_answers (
+    id BIGINT UNSIGNED AUTO_INCREMENT,
+    take_uuid VARCHAR(255),
+    quiz_id BIGINT UNSIGNED,
+    question_id BIGINT UNSIGNED,
+    answer_id BIGINT UNSIGNED,
+    PRIMARY KEY (id, take_uuid, quiz_id, question_id, answer_id),
+    FOREIGN KEY (quiz_id) REFERENCES quizzes(id),
+    FOREIGN KEY (question_id) REFERENCES questions(id),
+    FOREIGN KEY (answer_id) REFERENCES answers(id)
+)
