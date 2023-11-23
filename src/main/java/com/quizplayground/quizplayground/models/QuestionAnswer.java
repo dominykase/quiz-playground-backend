@@ -21,11 +21,11 @@ public class QuestionAnswer {
     private @Getter @Setter String takeUuid;
 
     @Column(name = "quiz_id", unique = false)
-    private @Getter @Setter Long quizId;
+    private @Getter @Setter Long quiz;
 
     @Column(name = "question_id", unique = false)
-    private @Getter @Setter Long questionId;
+    private @Getter @Setter Long question;
 
     @Column(name = "answer_id", unique = false)
-    private @Getter @Setter Long answerId;
+    private @Getter @Setter Long answer;
 }
