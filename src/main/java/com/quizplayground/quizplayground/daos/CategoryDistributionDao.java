@@ -3,10 +3,11 @@ package com.quizplayground.quizplayground.daos;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.quizplayground.quizplayground.models.Category;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -16,7 +17,7 @@ public class CategoryDistributionDao {
     @Autowired
     private EntityManager entityManager;
 
-    public Map<Long, Long> calculate(Long quizId) {
+    public Map<Long, Long> calculate(Long quizId, List<Category> categories) {
         Map<Long, Long> categoryDistribution = new HashMap<Long, Long>();
         List<String> takeUuids = this.getQuizTakeUuids(quizId);
 
@@ -37,6 +38,12 @@ public class CategoryDistributionDao {
                 categoryDistribution.put(maxId, categoryDistribution.get(maxId) + 1L);
             } else {
                 categoryDistribution.put(maxId, 1L);
+            }
+        }
+
+        for (Category category: categories) {
+            if (!categoryDistribution.containsKey(category.getId())) {
+                categoryDistribution.put(category.getId(), 0L);
             }
         }
 

@@ -25,7 +25,7 @@ public class GetQuizResultsUseCase {
         Quiz quiz = this.quizRepository.findById(quizId).orElseThrow(() -> new QuizNotFoundException(quizId));
         
         ResultsOverview resultsOverview = new ResultsOverview();
-        resultsOverview.categoryDistribution = this.categoryDistributionDao.calculate(quizId);
+        resultsOverview.categoryDistribution = this.categoryDistributionDao.calculate(quizId, quiz.getCategories());
         resultsOverview.frequencies = this.answerFrequenciesDao.getAnswerFrequencies(quizId);
 
         return resultsOverview;
